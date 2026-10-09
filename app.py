@@ -52,7 +52,7 @@ body{font-family:Arial;margin:0;background:#f4f6f9}
 <a href="/dashboard">Admin</a>
 <a href="/logout">Logout</a>
 </div>
-{{content}}
+{{content|safe}}
 </body>
 </html>
 """
