@@ -87,7 +87,22 @@ ROOMS_HTML = """
 @app.route('/')
 def home():
     content = """
-    <div class="card"><h2>Welcome to SHANON HOSTELS</h2>
+    <div style="background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('/hostel.jpg'); background-size:cover; background-position:center; padding:40px 20px; border-radius:10px; text-align:center; min-height:400px">
+    <h1 style="background:rgba(255,255,255,0.9); display:inline-block; padding:10px 20px; border-radius:20px; color:#0d1b2a">SHANON HOSTELS - Best in Lwanda</h1>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:30px; text-align:left">
+      <div class="card" style="background:rgba(255,255,255,0.9)">
+        <h2>Welcome to SHANON HOSTELS</h2>
+        <p>Affordable, Secure, Clean student accommodation in Lwanda.</p>
+        <a class="btn" href="/rooms">View Rooms & Photos 📸</a>
+        <a class="btn" style="background:green" href="https://wa.me/254799814706">WhatsApp Us</a>
+      </div>
+      <div class="card" style="background:rgba(255,255,255,0.9)">
+        <h3>Why Choose Us?</h3>
+        <p>✅ Free WiFi<br>✅ 24/7 Security<br>✅ Clean Water<br>✅ Near University<br>✅ M-Pesa Allowed</p>
+      </div>
+    </div>
+    </div>
+    """
     <p>Affordable, Secure, Clean student accommodation in Lwanda.</p>
     <a class="btn" href="/rooms">View Rooms & Photos 📸</a>
     <a class="btn" style="background:green" href="https://wa.me/254799814706">WhatsApp Us</a>
@@ -144,4 +159,8 @@ def logout():
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000)
+   @app.route('/hostel.jpg')
+def hostel_img():
+    return app.send_static_file('hostel.jpg') if os.path.exists('static/hostel.jpg') else redirect('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800')
+
+if __name__ == '__main__': 
